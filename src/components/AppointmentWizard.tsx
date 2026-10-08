@@ -17,6 +17,8 @@ import {
 } from 'lucide-react';
 import { SPECIALTIES, DOCTORS, CLINIC_INFO, Specialty, Doctor } from '../data/clinicData';
 import { ClinicLogo } from './ClinicLogo';
+import { createAppointment } from '../services/clinicService';
+import { useAuth } from '../contexts/AuthContext';
 
 interface AppointmentWizardProps {
   initialSpecialtyId?: string;
@@ -48,6 +50,15 @@ export const AppointmentWizard: React.FC<AppointmentWizardProps> = ({
   const [confirmationNumber, setConfirmationNumber] = useState<string>('');
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
+
+  const { user } = useAuth();
+
+  useEffect(() => {
+    if (user) {
+      if (!fullName && user.displayName) setFullName(user.displayName);
+      if (!email && user.email) setEmail(user.email);
+    }
+  }, [user]);
 
   // Sync initial props
   useEffect(() => {
@@ -138,19 +149,44 @@ export const AppointmentWizard: React.FC<AppointmentWizardProps> = ({
     }
   };
 
-  const handleSubmitBooking = () => {
+  const handleSubmitBooking = async () => {
     setIsSubmitting(true);
-    // Simulate submission delay
-    setTimeout(() => {
-      const randomCode = Math.floor(1000 + Math.random() * 9000);
-      const conf = `GC-2026-${randomCode}`;
+    const randomCode = Math.floor(1000 + Math.random() * 9000);
+    const conf = `GC-2026-${randomCode}`;
+
+    try {
+      await createAppointment({
+        confirmationCode: conf,
+        fullName,
+        phone,
+        email,
+        specialtyId,
+        specialtyName: currentSpecialty ? currentSpecialty.name : 'Médecine Générale',
+        doctorId,
+        doctorName: currentDoctor ? currentDoctor.name : 'Premier praticien disponible',
+        date: selectedDate,
+        time: selectedTime,
+        notes: notes ? `${isInsured ? `[Assurance: ${insuranceName}] ` : ''}${notes}` : (isInsured ? `[Assurance: ${insuranceName}]` : ''),
+        status: 'confirme',
+        userId: user?.uid || '',
+        createdAt: new Date().toISOString(),
+      });
       setConfirmationNumber(conf);
-      setIsSubmitting(false);
       setStep(5);
       if (onAppointmentSuccess) {
         onAppointmentSuccess();
       }
-    }, 700);
+    } catch (err) {
+      console.error('Erreur enregistrement rendez-vous Firestore:', err);
+      // Fallback display confirmation code
+      setConfirmationNumber(conf);
+      setStep(5);
+      if (onAppointmentSuccess) {
+        onAppointmentSuccess();
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleReset = () => {

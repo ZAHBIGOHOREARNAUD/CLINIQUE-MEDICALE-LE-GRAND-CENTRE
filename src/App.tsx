@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { SpecialtiesSection } from './components/SpecialtiesSection';
@@ -15,8 +15,11 @@ import { Footer } from './components/Footer';
 import { MobileBottomBar } from './components/MobileBottomBar';
 import { WhatsAppFloatingButton } from './components/WhatsAppFloatingButton';
 import { EmergencyModal, MentionsLegalesModal, PrivacyModal } from './components/Modals';
+import { PatientPortalModal } from './components/PatientPortalModal';
+import { AuthProvider } from './contexts/AuthContext';
+import { testFirestoreConnection } from './lib/firebase';
 
-export default function App() {
+function MainApp() {
   const [activeSection, setActiveSection] = useState<string>('accueil');
   const [selectedSpecialtyForBooking, setSelectedSpecialtyForBooking] = useState<string>('cardio');
   const [selectedDoctorForBooking, setSelectedDoctorForBooking] = useState<string>('');
@@ -26,6 +29,12 @@ export default function App() {
   const [isMentionsModalOpen, setIsMentionsModalOpen] = useState<boolean>(false);
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState<boolean>(false);
   const [isWhatsAppPopupOpen, setIsWhatsAppPopupOpen] = useState<boolean>(false);
+  const [isPatientPortalOpen, setIsPatientPortalOpen] = useState<boolean>(false);
+
+  // Validate Firestore connection on boot
+  useEffect(() => {
+    testFirestoreConnection();
+  }, []);
 
   // Smooth navigation to a specific section
   const handleNavigate = (sectionId: string) => {
@@ -70,6 +79,7 @@ export default function App() {
         onNavigate={handleNavigate}
         onOpenAppointment={scrollToAppointment}
         onOpenEmergency={() => setIsEmergencyModalOpen(true)}
+        onOpenPatientPortal={() => setIsPatientPortalOpen(true)}
       />
 
       <main className="flex-1">
@@ -145,6 +155,12 @@ export default function App() {
       />
 
       {/* Modals */}
+      <PatientPortalModal
+        isOpen={isPatientPortalOpen}
+        onClose={() => setIsPatientPortalOpen(false)}
+        onBookNewAppointment={scrollToAppointment}
+      />
+
       <EmergencyModal
         isOpen={isEmergencyModalOpen}
         onClose={() => setIsEmergencyModalOpen(false)}
@@ -160,5 +176,13 @@ export default function App() {
         onClose={() => setIsPrivacyModalOpen(false)}
       />
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <AuthProvider>
+      <MainApp />
+    </AuthProvider>
   );
 }

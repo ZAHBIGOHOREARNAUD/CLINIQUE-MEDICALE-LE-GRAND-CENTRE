@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { Phone, Calendar, Menu, X, Activity, AlertCircle } from 'lucide-react';
+import { Phone, Calendar, Menu, X, Activity, AlertCircle, User as UserIcon } from 'lucide-react';
 import { CLINIC_INFO } from '../data/clinicData';
 import { ClinicLogo } from './ClinicLogo';
+import { useAuth } from '../contexts/AuthContext';
 
 interface HeaderProps {
   activeSection: string;
   onNavigate: (sectionId: string) => void;
   onOpenAppointment: () => void;
   onOpenEmergency: () => void;
+  onOpenPatientPortal?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   activeSection,
   onNavigate,
   onOpenAppointment,
-  onOpenEmergency
+  onOpenEmergency,
+  onOpenPatientPortal
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -41,6 +44,8 @@ export const Header: React.FC<HeaderProps> = ({
     onNavigate(id);
     setMobileMenuOpen(false);
   };
+
+  const { user, isAdmin } = useAuth();
 
   return (
     <header className="sticky top-0 z-50 transition-all duration-300">
@@ -117,7 +122,31 @@ export const Header: React.FC<HeaderProps> = ({
           </nav>
 
           {/* Desktop Action CTAs */}
-          <div className="hidden sm:flex items-center gap-3">
+          <div className="hidden sm:flex items-center gap-2.5">
+            {/* Espace Patient Button */}
+            <button
+              onClick={onOpenPatientPortal}
+              className={`inline-flex items-center gap-2 px-3 py-2 text-xs font-bold rounded-xl border transition-all cursor-pointer ${
+                user
+                  ? 'bg-blue-50/80 text-[#163E93] border-blue-200 hover:bg-blue-100/70'
+                  : 'text-slate-700 bg-white border-slate-200 hover:bg-slate-50'
+              }`}
+              title="Mon Espace Patient / Mes Rendez-vous"
+            >
+              {user?.photoURL ? (
+                <img
+                  src={user.photoURL}
+                  alt={user.displayName || 'Compte'}
+                  className="w-4 h-4 rounded-full object-cover"
+                />
+              ) : (
+                <UserIcon className="w-3.5 h-3.5 text-[#2563EB]" />
+              )}
+              <span className="truncate max-w-[110px]">
+                {user ? (isAdmin ? 'Admin' : user.displayName?.split(' ')[0] || 'Patient') : 'Espace Patient'}
+              </span>
+            </button>
+
             <a
               href={`tel:${CLINIC_INFO.phoneMainRaw}`}
               className="hidden xl:inline-flex items-center gap-2 px-3 py-2 text-xs font-bold text-[#163E93] hover:bg-blue-50/60 border border-slate-200 rounded-xl transition-colors"
@@ -137,6 +166,13 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Mobile hamburger button */}
           <div className="flex sm:hidden items-center gap-2">
+            <button
+              onClick={onOpenPatientPortal}
+              className="p-2 text-[#163E93] bg-blue-50 rounded-lg border border-blue-200"
+              title="Espace Patient"
+            >
+              <UserIcon className="w-4 h-4" />
+            </button>
             <button
               onClick={onOpenAppointment}
               className="px-2.5 py-1.5 text-xs font-bold text-white bg-[#163E93] rounded-lg"
