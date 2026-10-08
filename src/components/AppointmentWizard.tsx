@@ -16,6 +16,7 @@ import {
   Building
 } from 'lucide-react';
 import { SPECIALTIES, DOCTORS, CLINIC_INFO, Specialty, Doctor } from '../data/clinicData';
+import { ClinicLogo } from './ClinicLogo';
 
 interface AppointmentWizardProps {
   initialSpecialtyId?: string;
@@ -188,10 +189,10 @@ export const AppointmentWizard: React.FC<AppointmentWizardProps> = ({
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-10">
-          <p className="text-xs font-bold uppercase tracking-widest text-[#27A6A6] mb-2">
+          <p className="text-xs font-bold uppercase tracking-widest text-[#2563EB] mb-2">
             Réservation En Ligne
           </p>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#064852] tracking-tight mb-3">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0E2866] tracking-tight mb-3">
             Prendre Rendez-vous en Moins de 2 Minutes
           </h2>
           <p className="text-sm text-slate-600">
@@ -200,7 +201,7 @@ export const AppointmentWizard: React.FC<AppointmentWizardProps> = ({
         </div>
 
         {/* Wizard Container */}
-        <div className="bg-[#F7FAFA] border border-slate-200/90 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-sm relative">
+        <div className="bg-[#F8FAFC] border border-slate-200/90 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-sm relative">
           
           {/* Stepper Progress Bar (hidden on final confirmation) */}
           {step < 5 && (
@@ -219,7 +220,7 @@ export const AppointmentWizard: React.FC<AppointmentWizardProps> = ({
                       key={s.num}
                       className={`flex flex-col items-center gap-1.5 transition-colors ${
                         isActive
-                          ? 'text-[#0B5D6B]'
+                          ? 'text-[#163E93]'
                           : isDone
                           ? 'text-emerald-700'
                           : 'text-slate-400'
@@ -228,7 +229,7 @@ export const AppointmentWizard: React.FC<AppointmentWizardProps> = ({
                       <div
                         className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-extrabold transition-all ${
                           isActive
-                            ? 'bg-[#0B5D6B] text-white ring-4 ring-[#0B5D6B]/15'
+                            ? 'bg-[#163E93] text-white ring-4 ring-[#163E93]/15'
                             : isDone
                             ? 'bg-emerald-600 text-white'
                             : 'bg-slate-200 text-slate-600'
@@ -243,7 +244,7 @@ export const AppointmentWizard: React.FC<AppointmentWizardProps> = ({
               </div>
               <div className="w-full bg-slate-200 h-1.5 rounded-full mt-3 overflow-hidden">
                 <div
-                  className="bg-[#0B5D6B] h-full transition-all duration-300"
+                  className="bg-[#163E93] h-full transition-all duration-300"
                   style={{ width: `${((step - 1) / 3) * 100}%` }}
                 />
               </div>
@@ -254,7 +255,7 @@ export const AppointmentWizard: React.FC<AppointmentWizardProps> = ({
           {step === 1 && (
             <div className="animate-fade-in space-y-6">
               <div>
-                <h3 className="text-lg font-bold text-[#064852] mb-1">
+                <h3 className="text-lg font-bold text-[#0E2866] mb-1">
                   Étape 1 : Choisissez la spécialité médicale
                 </h3>
                 <p className="text-xs text-slate-500">
@@ -271,11 +272,11 @@ export const AppointmentWizard: React.FC<AppointmentWizardProps> = ({
                       onClick={() => setSpecialtyId(spec.id)}
                       className={`text-left p-4 rounded-xl border transition-all cursor-pointer ${
                         isSelected
-                          ? 'bg-white border-[#0B5D6B] ring-2 ring-[#0B5D6B] shadow-xs'
-                          : 'bg-white border-slate-200 hover:border-[#27A6A6]/60'
+                          ? 'bg-white border-[#163E93] ring-2 ring-[#163E93] shadow-xs'
+                          : 'bg-white border-slate-200 hover:border-[#2563EB]/60'
                       }`}
                     >
-                      <p className="text-sm font-bold text-[#064852]">{spec.name}</p>
+                      <p className="text-sm font-bold text-[#0E2866]">{spec.name}</p>
                       <p className="text-xs text-slate-500 mt-1 line-clamp-2">{spec.shortDesc}</p>
                     </button>
                   );
@@ -288,11 +289,11 @@ export const AppointmentWizard: React.FC<AppointmentWizardProps> = ({
           {step === 2 && (
             <div className="animate-fade-in space-y-6">
               <div>
-                <h3 className="text-lg font-bold text-[#064852] mb-1">
+                <h3 className="text-lg font-bold text-[#0E2866] mb-1">
                   Étape 2 : Choisissez votre praticien
                 </h3>
                 <p className="text-xs text-slate-500">
-                  Spécialité sélectionnée : <strong className="text-[#0B5D6B]">{currentSpecialty?.name}</strong>
+                  Spécialité sélectionnée : <strong className="text-[#163E93]">{currentSpecialty?.name}</strong>
                 </p>
               </div>
 
@@ -302,16 +303,16 @@ export const AppointmentWizard: React.FC<AppointmentWizardProps> = ({
                   onClick={() => setDoctorId('')}
                   className={`w-full text-left p-4 rounded-xl border transition-all cursor-pointer flex items-center justify-between ${
                     doctorId === ''
-                      ? 'bg-white border-[#0B5D6B] ring-2 ring-[#0B5D6B] shadow-xs'
-                      : 'bg-white border-slate-200 hover:border-[#27A6A6]/60'
+                      ? 'bg-white border-[#163E93] ring-2 ring-[#163E93] shadow-xs'
+                      : 'bg-white border-slate-200 hover:border-[#2563EB]/60'
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-[#27A6A6]/10 flex items-center justify-center text-[#27A6A6] font-bold">
+                    <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-[#163E93] font-bold">
                       ⚡
                     </div>
                     <div>
-                      <p className="text-sm font-bold text-[#064852]">Premier médecin disponible</p>
+                      <p className="text-sm font-bold text-[#0E2866]">Premier médecin disponible</p>
                       <p className="text-xs text-slate-500">Recommandé pour obtenir le rendez-vous le plus rapide</p>
                     </div>
                   </div>
@@ -329,8 +330,8 @@ export const AppointmentWizard: React.FC<AppointmentWizardProps> = ({
                       onClick={() => setDoctorId(doc.id)}
                       className={`w-full text-left p-4 rounded-xl border transition-all cursor-pointer flex items-center justify-between ${
                         isSelected
-                          ? 'bg-white border-[#0B5D6B] ring-2 ring-[#0B5D6B] shadow-xs'
-                          : 'bg-white border-slate-200 hover:border-[#27A6A6]/60'
+                          ? 'bg-white border-[#163E93] ring-2 ring-[#163E93] shadow-xs'
+                          : 'bg-white border-slate-200 hover:border-[#2563EB]/60'
                       }`}
                     >
                       <div className="flex items-center gap-3">
@@ -340,8 +341,8 @@ export const AppointmentWizard: React.FC<AppointmentWizardProps> = ({
                           className="w-12 h-12 rounded-full object-cover border border-slate-200"
                         />
                         <div>
-                          <p className="text-sm font-bold text-[#064852]">{doc.name}</p>
-                          <p className="text-xs text-[#27A6A6]">{doc.title}</p>
+                          <p className="text-sm font-bold text-[#0E2866]">{doc.name}</p>
+                          <p className="text-xs font-bold text-[#2563EB]">{doc.title}</p>
                           <p className="text-[11px] text-slate-500 mt-0.5">
                             {doc.experienceYears} ans d'exp. · Consultations : {doc.days.join(', ')}
                           </p>
@@ -362,11 +363,11 @@ export const AppointmentWizard: React.FC<AppointmentWizardProps> = ({
           {step === 3 && (
             <div className="animate-fade-in space-y-6">
               <div>
-                <h3 className="text-lg font-bold text-[#064852] mb-1">
+                <h3 className="text-lg font-bold text-[#0E2866] mb-1">
                   Étape 3 : Choisissez le jour et l'heure
                 </h3>
                 <p className="text-xs text-slate-500">
-                  Praticien : <strong className="text-[#0B5D6B]">{currentDoctor ? currentDoctor.name : 'Premier médecin disponible'}</strong> ({currentSpecialty?.name})
+                  Praticien : <strong className="text-[#163E93]">{currentDoctor ? currentDoctor.name : 'Premier médecin disponible'}</strong> ({currentSpecialty?.name})
                 </p>
               </div>
 
@@ -384,8 +385,8 @@ export const AppointmentWizard: React.FC<AppointmentWizardProps> = ({
                         onClick={() => setSelectedDate(item.iso)}
                         className={`p-3 text-center rounded-xl border transition-all cursor-pointer ${
                           isSelected
-                            ? 'bg-[#0B5D6B] text-white border-[#0B5D6B] shadow-xs'
-                            : 'bg-white text-slate-700 border-slate-200 hover:border-[#27A6A6]'
+                            ? 'bg-[#163E93] text-white border-[#163E93] shadow-xs'
+                            : 'bg-white text-slate-700 border-slate-200 hover:border-[#2563EB]'
                         }`}
                       >
                         <p className="text-xs font-extrabold capitalize">{item.label}</p>
@@ -413,8 +414,8 @@ export const AppointmentWizard: React.FC<AppointmentWizardProps> = ({
                           onClick={() => setSelectedTime(time)}
                           className={`py-2 text-xs font-bold rounded-lg border transition-all cursor-pointer ${
                             isSelected
-                              ? 'bg-[#27A6A6] text-white border-[#27A6A6]'
-                              : 'bg-white text-slate-700 border-slate-200 hover:border-[#27A6A6]'
+                              ? 'bg-[#2563EB] text-white border-[#2563EB]'
+                              : 'bg-white text-slate-700 border-slate-200 hover:border-[#2563EB]'
                           }`}
                         >
                           {time}
@@ -437,8 +438,8 @@ export const AppointmentWizard: React.FC<AppointmentWizardProps> = ({
                           onClick={() => setSelectedTime(time)}
                           className={`py-2 text-xs font-bold rounded-lg border transition-all cursor-pointer ${
                             isSelected
-                              ? 'bg-[#27A6A6] text-white border-[#27A6A6]'
-                              : 'bg-white text-slate-700 border-slate-200 hover:border-[#27A6A6]'
+                              ? 'bg-[#2563EB] text-white border-[#2563EB]'
+                              : 'bg-white text-slate-700 border-slate-200 hover:border-[#2563EB]'
                           }`}
                         >
                           {time}
@@ -462,7 +463,7 @@ export const AppointmentWizard: React.FC<AppointmentWizardProps> = ({
           {step === 4 && (
             <div className="animate-fade-in space-y-6">
               <div>
-                <h3 className="text-lg font-bold text-[#064852] mb-1">
+                <h3 className="text-lg font-bold text-[#0E2866] mb-1">
                   Étape 4 : Coordonnées du patient & Validation
                 </h3>
                 <p className="text-xs text-slate-500">
@@ -483,7 +484,7 @@ export const AppointmentWizard: React.FC<AppointmentWizardProps> = ({
                       placeholder="Ex: Kouamé Koffi Jean"
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
-                      className={`w-full pl-9 pr-3 py-2 text-sm bg-white border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0B5D6B] ${
+                      className={`w-full pl-9 pr-3 py-2 text-sm bg-white border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#163E93] ${
                         validationErrors.fullName ? 'border-rose-400' : 'border-slate-200'
                       }`}
                     />
@@ -505,7 +506,7 @@ export const AppointmentWizard: React.FC<AppointmentWizardProps> = ({
                       placeholder="Ex: +225 07 00 11 22 33"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      className={`w-full pl-9 pr-3 py-2 text-sm bg-white border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0B5D6B] ${
+                      className={`w-full pl-9 pr-3 py-2 text-sm bg-white border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#163E93] ${
                         validationErrors.phone ? 'border-rose-400' : 'border-slate-200'
                       }`}
                     />
@@ -527,7 +528,7 @@ export const AppointmentWizard: React.FC<AppointmentWizardProps> = ({
                       placeholder="Ex: patient@domaine.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className={`w-full pl-9 pr-3 py-2 text-sm bg-white border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0B5D6B] ${
+                      className={`w-full pl-9 pr-3 py-2 text-sm bg-white border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#163E93] ${
                         validationErrors.email ? 'border-rose-400' : 'border-slate-200'
                       }`}
                     />
@@ -545,7 +546,7 @@ export const AppointmentWizard: React.FC<AppointmentWizardProps> = ({
                   <select
                     value={reason}
                     onChange={(e) => setReason(e.target.value)}
-                    className="w-full px-3 py-2 text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0B5D6B]"
+                    className="w-full px-3 py-2 text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#163E93]"
                   >
                     <option value="Première consultation">Première consultation</option>
                     <option value="Consultation de suivi">Consultation de suivi</option>
@@ -570,7 +571,7 @@ export const AppointmentWizard: React.FC<AppointmentWizardProps> = ({
                       onChange={(e) => setIsInsured(e.target.checked)}
                       className="sr-only peer"
                     />
-                    <div className="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#0B5D6B]"></div>
+                    <div className="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#163E93]"></div>
                   </label>
                 </div>
 
@@ -598,8 +599,8 @@ export const AppointmentWizard: React.FC<AppointmentWizardProps> = ({
               </div>
 
               {/* Recap Box before submitting */}
-              <div className="bg-[#064852] text-white p-4 rounded-xl text-xs space-y-1">
-                <p className="font-bold text-[#F2B84B] uppercase tracking-wider text-[11px]">Récapitulatif de votre demande :</p>
+              <div className="bg-[#0E2866] text-white p-4 rounded-xl text-xs space-y-1">
+                <p className="font-bold text-[#F59E0B] uppercase tracking-wider text-[11px]">Récapitulatif de votre demande :</p>
                 <p>Spécialité : <strong>{currentSpecialty?.name}</strong></p>
                 <p>Médecin : <strong>{currentDoctor ? currentDoctor.name : 'Premier médecin disponible'}</strong></p>
                 <p>Date & Heure : <strong>{selectedDate} à {selectedTime}</strong></p>
@@ -617,10 +618,10 @@ export const AppointmentWizard: React.FC<AppointmentWizardProps> = ({
               </div>
 
               <div>
-                <span className="text-xs font-bold uppercase tracking-widest text-[#27A6A6]">
+                <span className="text-xs font-extrabold uppercase tracking-widest text-[#2563EB]">
                   Réservation Enregistrée
                 </span>
-                <h3 className="text-2xl font-extrabold text-[#064852] mt-1">
+                <h3 className="text-2xl font-extrabold text-[#0E2866] mt-1">
                   Votre Rendez-vous est Confirmé !
                 </h3>
                 <p className="text-sm text-slate-600 max-w-md mx-auto mt-2">
@@ -629,15 +630,18 @@ export const AppointmentWizard: React.FC<AppointmentWizardProps> = ({
               </div>
 
               {/* Printable Appointment Pass */}
-              <div className="bg-white border-2 border-dashed border-[#0B5D6B]/30 rounded-2xl p-6 max-w-lg mx-auto text-left shadow-md relative">
+              <div className="bg-white border-2 border-dashed border-[#163E93]/30 rounded-2xl p-6 max-w-lg mx-auto text-left shadow-md relative">
                 <div className="flex items-center justify-between border-b border-slate-100 pb-4 mb-4">
-                  <div>
-                    <span className="text-[10px] uppercase font-bold text-[#27A6A6] tracking-wider">Clinique Médicale</span>
-                    <h4 className="text-base font-extrabold text-[#064852]">Le Grand Centre</h4>
+                  <div className="flex items-center gap-3">
+                    <ClinicLogo size={42} />
+                    <div>
+                      <span className="text-[10px] uppercase font-extrabold text-[#163E93] tracking-wider block">Clinique Médicale</span>
+                      <h4 className="text-base font-extrabold text-[#0E2866] leading-tight">Le Grand Centre</h4>
+                    </div>
                   </div>
                   <div className="text-right">
                     <span className="text-[10px] text-slate-400 uppercase font-semibold">N° Réservation</span>
-                    <p className="text-sm font-black text-[#0B5D6B] font-mono">{confirmationNumber}</p>
+                    <p className="text-sm font-black text-[#163E93] font-mono">{confirmationNumber}</p>
                   </div>
                 </div>
 
@@ -652,7 +656,7 @@ export const AppointmentWizard: React.FC<AppointmentWizardProps> = ({
                   </div>
                   <div>
                     <span className="text-slate-400 block text-[11px]">Spécialité :</span>
-                    <strong className="text-[#0B5D6B]">{currentSpecialty?.name}</strong>
+                    <strong className="text-[#163E93]">{currentSpecialty?.name}</strong>
                   </div>
                   <div>
                     <span className="text-slate-400 block text-[11px]">Praticien :</span>
@@ -676,7 +680,7 @@ export const AppointmentWizard: React.FC<AppointmentWizardProps> = ({
                 )}
 
                 <div className="border-t border-slate-100 pt-3 text-[11px] text-slate-500 flex items-center gap-2">
-                  <Building className="w-3.5 h-3.5 text-[#27A6A6]" />
+                  <Building className="w-3.5 h-3.5 text-[#2563EB]" />
                   <span>{CLINIC_INFO.address}</span>
                 </div>
               </div>
@@ -701,7 +705,7 @@ export const AppointmentWizard: React.FC<AppointmentWizardProps> = ({
 
                 <button
                   onClick={handleReset}
-                  className="px-4 py-2.5 text-xs font-bold text-[#0B5D6B] bg-[#0B5D6B]/10 hover:bg-[#0B5D6B]/20 rounded-xl transition-colors"
+                  className="px-4 py-2.5 text-xs font-bold text-[#163E93] bg-blue-50 hover:bg-blue-100 rounded-xl transition-colors"
                 >
                   Nouveau rendez-vous
                 </button>
@@ -728,7 +732,7 @@ export const AppointmentWizard: React.FC<AppointmentWizardProps> = ({
               <button
                 onClick={handleNext}
                 disabled={isSubmitting || (step === 3 && (!selectedDate || !selectedTime))}
-                className="px-6 py-2.5 text-xs font-bold text-white bg-[#0B5D6B] hover:bg-[#064852] active:bg-[#04333b] disabled:opacity-50 disabled:cursor-not-allowed rounded-xl flex items-center gap-2 shadow-xs transition-all cursor-pointer"
+                className="px-6 py-2.5 text-xs font-bold text-white bg-[#163E93] hover:bg-[#0E2866] active:bg-[#0A1E4A] disabled:opacity-50 disabled:cursor-not-allowed rounded-xl flex items-center gap-2 shadow-xs transition-all cursor-pointer"
               >
                 <span>{isSubmitting ? 'Traitement en cours...' : step === 4 ? 'Confirmer la réservation' : 'Continuer'}</span>
                 {step < 4 && <ChevronRight className="w-4 h-4" />}

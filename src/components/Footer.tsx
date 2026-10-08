@@ -1,6 +1,7 @@
 import React from 'react';
 import { Activity, Phone, Mail, MapPin, ShieldCheck, Heart } from 'lucide-react';
 import { CLINIC_INFO } from '../data/clinicData';
+import { ClinicLogo } from './ClinicLogo';
 
 interface FooterProps {
   onNavigate: (sectionId: string) => void;
@@ -16,7 +17,7 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenEmergency
 }) => {
   return (
-    <footer className="bg-[#064852] text-slate-300 pt-16 pb-24 md:pb-12 border-t border-[#0B5D6B]/30">
+    <footer className="bg-[#0E2866] text-slate-300 pt-16 pb-24 md:pb-12 border-t border-[#163E93]/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         
         {/* Main Footer Grid */}
@@ -25,11 +26,11 @@ export const Footer: React.FC<FooterProps> = ({
           {/* Col 1: Brand & Presentation */}
           <div className="lg:col-span-4 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#0B5D6B] to-[#27A6A6] flex items-center justify-center text-white shadow-xs">
-                <Activity className="w-6 h-6 text-white" />
+              <div className="p-1 bg-white rounded-xl shadow-xs">
+                <ClinicLogo size={46} />
               </div>
               <div>
-                <span className="block text-[10px] font-bold tracking-widest text-[#27A6A6] uppercase">
+                <span className="block text-[10px] font-extrabold tracking-widest text-[#93C5FD] uppercase">
                   Clinique Médicale
                 </span>
                 <span className="block text-lg font-black tracking-tight text-white leading-none">
@@ -50,7 +51,7 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Col 2: Navigation rapide */}
           <div className="lg:col-span-2">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-[#F2B84B] mb-4">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#F59E0B] mb-4">
               Navigation
             </h4>
             <ul className="space-y-2 text-xs">
@@ -89,7 +90,7 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Col 3: Spécialités clés */}
           <div className="lg:col-span-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-[#F2B84B] mb-4">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#F59E0B] mb-4">
               Pôles Médicaux
             </h4>
             <ul className="space-y-2 text-xs">
@@ -104,24 +105,24 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Col 4: Contacts & Urgences */}
           <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-[#F2B84B] mb-4">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#F59E0B] mb-4">
               Coordonnées
             </h4>
             
             <div className="flex items-start gap-2.5 text-xs">
-              <MapPin className="w-4 h-4 text-[#27A6A6] shrink-0 mt-0.5" />
+              <MapPin className="w-4 h-4 text-[#60A5FA] shrink-0 mt-0.5" />
               <span>{CLINIC_INFO.address}</span>
             </div>
 
             <div className="flex items-center gap-2.5 text-xs">
-              <Phone className="w-4 h-4 text-[#27A6A6] shrink-0" />
+              <Phone className="w-4 h-4 text-[#60A5FA] shrink-0" />
               <a href={`tel:${CLINIC_INFO.phoneMainRaw}`} className="hover:text-white font-medium">
                 {CLINIC_INFO.phoneMain}
               </a>
             </div>
 
             <div className="flex items-center gap-2.5 text-xs">
-              <Mail className="w-4 h-4 text-[#27A6A6] shrink-0" />
+              <Mail className="w-4 h-4 text-[#60A5FA] shrink-0" />
               <a href={`mailto:${CLINIC_INFO.email}`} className="hover:text-white">
                 {CLINIC_INFO.email}
               </a>

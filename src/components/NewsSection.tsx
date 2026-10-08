@@ -6,16 +6,16 @@ export const NewsSection: React.FC = () => {
   const [activeArticle, setActiveArticle] = useState<Article | null>(null);
 
   return (
-    <section id="actualites" className="py-16 lg:py-24 bg-[#F7FAFA] border-b border-slate-100">
+    <section id="actualites" className="py-16 lg:py-24 bg-[#F8FAFC] border-b border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
           <div className="max-w-2xl">
-            <p className="text-xs font-bold uppercase tracking-widest text-[#27A6A6] mb-2">
+            <p className="text-xs font-bold uppercase tracking-widest text-[#2563EB] mb-2">
               Actualités & Prévention
             </p>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#064852] tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0E2866] tracking-tight">
               Conseils Santé & Vie de la Clinique
             </h2>
             <p className="text-sm sm:text-base text-slate-600 mt-2">
@@ -34,13 +34,13 @@ export const NewsSection: React.FC = () => {
               <div className="p-6">
                 {/* Category & Meta */}
                 <div className="flex items-center justify-between text-xs text-slate-500 mb-3">
-                  <span className="font-bold text-[#0B5D6B] uppercase tracking-wider text-[11px]">
+                  <span className="font-bold text-[#163E93] uppercase tracking-wider text-[11px]">
                     {article.category}
                   </span>
                   <span>{article.readTime}</span>
                 </div>
 
-                <h3 className="text-base sm:text-lg font-bold text-[#064852] group-hover:text-[#0B5D6B] transition-colors leading-snug mb-3">
+                <h3 className="text-base sm:text-lg font-bold text-[#0E2866] group-hover:text-[#163E93] transition-colors leading-snug mb-3">
                   {article.title}
                 </h3>
 
@@ -56,7 +56,7 @@ export const NewsSection: React.FC = () => {
 
                 <button
                   onClick={() => setActiveArticle(article)}
-                  className="text-xs font-bold text-[#0B5D6B] group-hover:text-[#27A6A6] flex items-center gap-1 hover:underline cursor-pointer"
+                  className="text-xs font-bold text-[#163E93] group-hover:text-[#2563EB] flex items-center gap-1 hover:underline cursor-pointer"
                 >
                   <span>Lire l'article</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
@@ -79,11 +79,11 @@ export const NewsSection: React.FC = () => {
               <X className="w-5 h-5" />
             </button>
 
-            <div className="text-xs font-bold text-[#27A6A6] uppercase tracking-wider mb-2">
+            <div className="text-xs font-bold text-[#2563EB] uppercase tracking-wider mb-2">
               {activeArticle.category}
             </div>
 
-            <h3 className="text-xl sm:text-2xl font-extrabold text-[#064852] leading-tight mb-4">
+            <h3 className="text-xl sm:text-2xl font-extrabold text-[#0E2866] leading-tight mb-4">
               {activeArticle.title}
             </h3>
 
@@ -111,9 +111,9 @@ export const NewsSection: React.FC = () => {
               </p>
             </div>
 
-            <div className="bg-[#F7FAFA] p-4 rounded-xl border border-slate-200 flex items-center justify-between">
+            <div className="bg-[#F8FAFC] p-4 rounded-xl border border-slate-200 flex items-center justify-between">
               <div>
-                <p className="text-xs font-bold text-[#064852]">Une question médicale sur ce sujet ?</p>
+                <p className="text-xs font-bold text-[#0E2866]">Une question médicale sur ce sujet ?</p>
                 <p className="text-[11px] text-slate-500">Nos spécialistes vous reçoivent en consultation.</p>
               </div>
               <button
@@ -122,7 +122,7 @@ export const NewsSection: React.FC = () => {
                   const el = document.getElementById('rendez-vous');
                   if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="px-4 py-2 text-xs font-bold text-white bg-[#0B5D6B] rounded-lg hover:bg-[#064852] transition-colors"
+                className="px-4 py-2 text-xs font-bold text-white bg-[#163E93] rounded-lg hover:bg-[#0E2866] transition-colors"
               >
                 Prendre RDV
               </button>

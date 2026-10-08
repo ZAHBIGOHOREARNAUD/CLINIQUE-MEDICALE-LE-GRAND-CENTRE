@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Phone, Calendar, Menu, X, Activity, AlertCircle } from 'lucide-react';
 import { CLINIC_INFO } from '../data/clinicData';
+import { ClinicLogo } from './ClinicLogo';
 
 interface HeaderProps {
   activeSection: string;
@@ -44,24 +45,24 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header className="sticky top-0 z-50 transition-all duration-300">
       {/* Top micro-bar with emergency alert & hours */}
-      <div className="bg-[#064852] text-white text-xs py-1.5 px-4 sm:px-6">
+      <div className="bg-[#0E2866] text-white text-xs py-1.5 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="inline-flex items-center gap-1.5 font-medium text-emerald-300">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
               Urgences 24/7 ouvertes
             </span>
-            <span className="hidden md:inline text-slate-300">· Plateau technique Cocody</span>
+            <span className="hidden md:inline text-blue-200">· Plateau technique Cocody</span>
           </div>
           <div className="flex items-center gap-4">
             <button
               onClick={onOpenEmergency}
-              className="text-amber-300 hover:text-amber-200 font-semibold flex items-center gap-1 transition-colors"
+              className="text-amber-300 hover:text-amber-200 font-semibold flex items-center gap-1 transition-colors cursor-pointer"
             >
               <AlertCircle className="w-3.5 h-3.5" />
               <span>Ligne Urgence : {CLINIC_INFO.phoneEmergency}</span>
             </button>
-            <span className="hidden lg:inline text-slate-300">· {CLINIC_INFO.openingHours.split('|')[0]}</span>
+            <span className="hidden lg:inline text-blue-200">· {CLINIC_INFO.openingHours.split('|')[0]}</span>
           </div>
         </div>
       </div>
@@ -70,24 +71,23 @@ export const Header: React.FC<HeaderProps> = ({
       <div
         className={`bg-white transition-all duration-300 ${
           isScrolled
-            ? 'py-2.5 shadow-sm border-b border-slate-100 bg-white/95 backdrop-blur-md'
-            : 'py-4 border-b border-slate-100'
+            ? 'py-2.5 shadow-sm border-b border-slate-200/80 bg-white/95 backdrop-blur-md'
+            : 'py-4 border-b border-slate-200/80'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
-          {/* Brand Logo */}
+          {/* Official Clinic Logo */}
           <button
             onClick={() => handleNavClick('accueil')}
-            className="flex items-center gap-3 text-left group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0B5D6B] rounded-lg"
+            className="flex items-center gap-3 text-left group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#163E93] rounded-lg transition-transform hover:opacity-95"
+            aria-label="Retour à l'accueil"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#0B5D6B] to-[#27A6A6] flex items-center justify-center text-white shadow-xs group-hover:scale-105 transition-transform duration-200">
-              <Activity className="w-6 h-6 text-white" />
-            </div>
-            <div>
-              <span className="block text-[11px] font-bold tracking-widest text-[#27A6A6] uppercase">
+            <ClinicLogo size={48} />
+            <div className="flex flex-col">
+              <span className="text-[10px] sm:text-[11px] font-extrabold tracking-widest text-[#163E93] uppercase">
                 Clinique Médicale
               </span>
-              <span className="block text-lg font-extrabold tracking-tight text-[#064852] leading-none">
+              <span className="text-base sm:text-lg font-black tracking-tight text-[#0E2866] leading-none">
                 Le Grand Centre
               </span>
             </div>
@@ -103,13 +103,13 @@ export const Header: React.FC<HeaderProps> = ({
                   onClick={() => handleNavClick(item.id)}
                   className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors relative ${
                     isActive
-                      ? 'text-[#0B5D6B] font-semibold'
-                      : 'text-slate-600 hover:text-[#0B5D6B] hover:bg-slate-50'
+                      ? 'text-[#163E93] font-bold'
+                      : 'text-slate-600 hover:text-[#163E93] hover:bg-blue-50/50'
                   }`}
                 >
                   {item.label}
                   {isActive && (
-                    <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-[#27A6A6] rounded-full"></span>
+                    <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-[#2563EB] rounded-full"></span>
                   )}
                 </button>
               );
@@ -120,17 +120,17 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="hidden sm:flex items-center gap-3">
             <a
               href={`tel:${CLINIC_INFO.phoneMainRaw}`}
-              className="hidden xl:inline-flex items-center gap-2 px-3 py-2 text-xs font-semibold text-[#0B5D6B] hover:bg-[#F7FAFA] border border-slate-200 rounded-lg transition-colors"
+              className="hidden xl:inline-flex items-center gap-2 px-3 py-2 text-xs font-bold text-[#163E93] hover:bg-blue-50/60 border border-slate-200 rounded-xl transition-colors"
             >
-              <Phone className="w-3.5 h-3.5 text-[#27A6A6]" />
+              <Phone className="w-3.5 h-3.5 text-[#2563EB]" />
               <span>{CLINIC_INFO.phoneMain}</span>
             </a>
 
             <button
               onClick={onOpenAppointment}
-              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-[#0B5D6B] hover:bg-[#064852] active:bg-[#04333b] rounded-lg shadow-xs hover:shadow-sm transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0B5D6B] focus-visible:ring-offset-2"
+              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-bold text-white bg-[#163E93] hover:bg-[#0E2866] active:bg-[#0A1E4A] rounded-xl shadow-xs hover:shadow-sm transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#163E93] cursor-pointer"
             >
-              <Calendar className="w-4 h-4 text-[#F2B84B]" />
+              <Calendar className="w-4 h-4 text-[#F59E0B]" />
               <span>Prendre rendez-vous</span>
             </button>
           </div>
@@ -139,13 +139,13 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="flex sm:hidden items-center gap-2">
             <button
               onClick={onOpenAppointment}
-              className="px-2.5 py-1.5 text-xs font-semibold text-white bg-[#0B5D6B] rounded-lg"
+              className="px-2.5 py-1.5 text-xs font-bold text-white bg-[#163E93] rounded-lg"
             >
               RDV
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-slate-700 hover:text-[#0B5D6B] rounded-lg border border-slate-200"
+              className="p-2 text-slate-700 hover:text-[#163E93] rounded-lg border border-slate-200"
               aria-label="Ouvrir le menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -164,7 +164,7 @@ export const Header: React.FC<HeaderProps> = ({
                 onClick={() => handleNavClick(item.id)}
                 className={`w-full text-left px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                   activeSection === item.id
-                    ? 'bg-[#F7FAFA] text-[#0B5D6B] font-semibold border-l-4 border-[#27A6A6]'
+                    ? 'bg-blue-50 text-[#163E93] font-bold border-l-4 border-[#2563EB]'
                     : 'text-slate-700 hover:bg-slate-50'
                 }`}
               >
@@ -179,17 +179,17 @@ export const Header: React.FC<HeaderProps> = ({
                 setMobileMenuOpen(false);
                 onOpenAppointment();
               }}
-              className="w-full flex items-center justify-center gap-2 py-3 text-sm font-semibold text-white bg-[#0B5D6B] rounded-xl shadow-xs"
+              className="w-full flex items-center justify-center gap-2 py-3 text-sm font-bold text-white bg-[#163E93] rounded-xl shadow-xs"
             >
-              <Calendar className="w-4 h-4 text-[#F2B84B]" />
+              <Calendar className="w-4 h-4 text-[#F59E0B]" />
               <span>Prendre rendez-vous en ligne</span>
             </button>
 
             <a
               href={`tel:${CLINIC_INFO.phoneMainRaw}`}
-              className="w-full flex items-center justify-center gap-2 py-2.5 text-sm font-semibold text-[#0B5D6B] border border-slate-200 rounded-xl bg-slate-50"
+              className="w-full flex items-center justify-center gap-2 py-2.5 text-sm font-bold text-[#163E93] border border-slate-200 rounded-xl bg-slate-50"
             >
-              <Phone className="w-4 h-4 text-[#27A6A6]" />
+              <Phone className="w-4 h-4 text-[#2563EB]" />
               <span>Appeler la clinique : {CLINIC_INFO.phoneMain}</span>
             </a>
 

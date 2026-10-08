@@ -19,16 +19,16 @@ export const MobileBottomBar: React.FC<MobileBottomBarProps> = ({
           href={`tel:${CLINIC_INFO.phoneMainRaw}`}
           className="flex flex-col items-center justify-center py-1.5 px-2 rounded-xl text-slate-700 hover:bg-slate-50 active:bg-slate-100 transition-colors"
         >
-          <Phone className="w-5 h-5 text-[#0B5D6B]" />
+          <Phone className="w-5 h-5 text-[#163E93]" />
           <span className="text-[11px] font-bold mt-0.5">Appeler</span>
         </a>
 
         {/* Appointment CTA */}
         <button
           onClick={onOpenAppointment}
-          className="flex flex-col items-center justify-center py-1.5 px-2 rounded-xl bg-[#0B5D6B] text-white active:bg-[#064852] shadow-xs transition-colors"
+          className="flex flex-col items-center justify-center py-1.5 px-2 rounded-xl bg-[#163E93] text-white active:bg-[#0E2866] shadow-xs transition-colors"
         >
-          <Calendar className="w-5 h-5 text-[#F2B84B]" />
+          <Calendar className="w-5 h-5 text-[#F59E0B]" />
           <span className="text-[11px] font-bold mt-0.5">Prendre RDV</span>
         </button>
 

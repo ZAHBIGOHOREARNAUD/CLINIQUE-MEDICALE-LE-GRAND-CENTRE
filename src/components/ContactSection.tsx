@@ -45,15 +45,15 @@ export const ContactSection: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-16 lg:py-24 bg-[#F7FAFA] border-b border-slate-100">
+    <section id="contact" className="py-16 lg:py-24 bg-[#F8FAFC] border-b border-slate-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-14">
-          <p className="text-xs font-bold uppercase tracking-widest text-[#27A6A6] mb-2">
+          <p className="text-xs font-extrabold uppercase tracking-widest text-[#2563EB] mb-2">
             À Votre Écoute
           </p>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#064852] tracking-tight mb-3">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0E2866] tracking-tight mb-3">
             Contactez la Clinique Le Grand Centre
           </h2>
           <p className="text-sm sm:text-base text-slate-600">
@@ -67,14 +67,14 @@ export const ContactSection: React.FC = () => {
           <div className="lg:col-span-5 space-y-4">
             
             {/* Main Phone Card */}
-            <div className="bg-white p-6 rounded-2xl border border-slate-200/90 shadow-2xs">
+            <div className="bg-white p-6 rounded-3xl border border-slate-200/90 shadow-xs">
               <div className="flex items-center gap-3.5 mb-2">
-                <div className="w-10 h-10 rounded-xl bg-[#0B5D6B]/10 flex items-center justify-center text-[#0B5D6B]">
+                <div className="w-10 h-10 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-[#163E93]">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
                   <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Standard Téléphonique</span>
-                  <h3 className="text-base font-bold text-[#064852]">Accueil & Rendez-vous</h3>
+                  <h3 className="text-base font-bold text-[#0E2866]">Accueil & Rendez-vous</h3>
                 </div>
               </div>
               <p className="text-xs text-slate-500 mb-3">
@@ -82,16 +82,16 @@ export const ContactSection: React.FC = () => {
               </p>
               <a
                 href={`tel:${CLINIC_INFO.phoneMainRaw}`}
-                className="inline-flex items-center gap-2 text-sm font-extrabold text-[#0B5D6B] hover:text-[#27A6A6] transition-colors"
+                className="inline-flex items-center gap-2 text-sm font-extrabold text-[#163E93] hover:text-[#2563EB] transition-colors"
               >
                 <span>{CLINIC_INFO.phoneMain}</span>
               </a>
             </div>
 
             {/* Emergency Phone Card */}
-            <div className="bg-rose-50/70 p-6 rounded-2xl border border-rose-200 shadow-2xs">
+            <div className="bg-rose-50/80 p-6 rounded-3xl border border-rose-200 shadow-xs">
               <div className="flex items-center gap-3.5 mb-2">
-                <div className="w-10 h-10 rounded-xl bg-rose-100 flex items-center justify-center text-rose-600">
+                <div className="w-10 h-10 rounded-2xl bg-rose-100 flex items-center justify-center text-rose-600">
                   <AlertCircle className="w-5 h-5" />
                 </div>
                 <div>
@@ -111,19 +111,19 @@ export const ContactSection: React.FC = () => {
             </div>
 
             {/* Email & Hours */}
-            <div className="bg-white p-6 rounded-2xl border border-slate-200/90 shadow-2xs space-y-4">
+            <div className="bg-white p-6 rounded-3xl border border-slate-200/90 shadow-xs space-y-4">
               <div className="flex items-start gap-3">
-                <Mail className="w-4 h-4 text-[#27A6A6] mt-0.5" />
+                <Mail className="w-4 h-4 text-[#2563EB] mt-0.5" />
                 <div className="text-xs">
                   <span className="font-bold text-slate-800 block">Courrier Électronique</span>
-                  <a href={`mailto:${CLINIC_INFO.email}`} className="text-[#0B5D6B] hover:underline">
+                  <a href={`mailto:${CLINIC_INFO.email}`} className="text-[#163E93] hover:underline font-semibold">
                     {CLINIC_INFO.email}
                   </a>
                 </div>
               </div>
 
               <div className="flex items-start gap-3 pt-3 border-t border-slate-100">
-                <Clock className="w-4 h-4 text-[#27A6A6] mt-0.5" />
+                <Clock className="w-4 h-4 text-[#2563EB] mt-0.5" />
                 <div className="text-xs text-slate-600">
                   <span className="font-bold text-slate-800 block mb-0.5">Horaires Consultations</span>
                   <p>{CLINIC_INFO.openingHours}</p>
@@ -136,7 +136,7 @@ export const ContactSection: React.FC = () => {
 
           {/* Right Column: Contact Form */}
           <div className="lg:col-span-7 bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/90 shadow-sm">
-            <h3 className="text-lg font-bold text-[#064852] mb-1">
+            <h3 className="text-lg font-bold text-[#0E2866] mb-1">
               Envoyez-nous un Message
             </h3>
             <p className="text-xs text-slate-500 mb-6">
@@ -154,7 +154,7 @@ export const ContactSection: React.FC = () => {
                 </p>
                 <button
                   onClick={() => setIsSuccess(false)}
-                  className="mt-2 text-xs font-bold text-[#0B5D6B] hover:underline"
+                  className="mt-2 text-xs font-bold text-[#163E93] hover:underline"
                 >
                   Envoyer un autre message
                 </button>
@@ -171,7 +171,7 @@ export const ContactSection: React.FC = () => {
                       placeholder="Votre nom complet"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className={`w-full px-3 py-2 text-sm bg-slate-50 border rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0B5D6B] ${
+                      className={`w-full px-3 py-2 text-sm bg-slate-50 border rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#163E93] ${
                         errors.name ? 'border-rose-400' : 'border-slate-200'
                       }`}
                     />
@@ -187,7 +187,7 @@ export const ContactSection: React.FC = () => {
                       placeholder="+225 07..."
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      className="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0B5D6B]"
+                      className="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#163E93]"
                     />
                   </div>
                 </div>
@@ -202,7 +202,7 @@ export const ContactSection: React.FC = () => {
                       placeholder="nom@exemple.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className={`w-full px-3 py-2 text-sm bg-slate-50 border rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0B5D6B] ${
+                      className={`w-full px-3 py-2 text-sm bg-slate-50 border rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#163E93] ${
                         errors.email ? 'border-rose-400' : 'border-slate-200'
                       }`}
                     />
@@ -216,7 +216,7 @@ export const ContactSection: React.FC = () => {
                     <select
                       value={subject}
                       onChange={(e) => setSubject(e.target.value)}
-                      className="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0B5D6B]"
+                      className="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#163E93]"
                     >
                       <option value="Demande d'information générale">Information générale</option>
                       <option value="Prise en charge assurance / Tiers payant">Prise en charge assurance</option>
@@ -240,7 +240,7 @@ export const ContactSection: React.FC = () => {
                     placeholder="Précisez votre demande ou vos questions..."
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    className={`w-full px-3 py-2 text-sm bg-slate-50 border rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0B5D6B] ${
+                    className={`w-full px-3 py-2 text-sm bg-slate-50 border rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#163E93] ${
                       errors.message ? 'border-rose-400' : 'border-slate-200'
                     }`}
                   />
@@ -251,9 +251,9 @@ export const ContactSection: React.FC = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 text-xs font-bold text-white bg-[#0B5D6B] hover:bg-[#064852] active:bg-[#04333b] rounded-xl shadow-xs transition-all cursor-pointer disabled:opacity-50"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 text-xs font-bold text-white bg-[#163E93] hover:bg-[#0E2866] active:bg-[#0A1E4A] rounded-xl shadow-xs transition-all cursor-pointer disabled:opacity-50"
                   >
-                    <Send className="w-4 h-4 text-[#F2B84B]" />
+                    <Send className="w-4 h-4 text-[#F59E0B]" />
                     <span>{isSubmitting ? 'Envoi en cours...' : 'Envoyer mon message'}</span>
                   </button>
                 </div>

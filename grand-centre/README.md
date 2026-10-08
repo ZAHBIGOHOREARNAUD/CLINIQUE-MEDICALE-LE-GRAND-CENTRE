@@ -46,14 +46,14 @@ grand-centre/
 └── README.md
 ```
 
-## Palette Officielle
-* `--primary`: `#0B5D6B` (Bleu canard profond médical)
-* `--primary-dark`: `#064852` (Teinte foncée d'autorité)
-* `--secondary`: `#27A6A6` (Turquoise santé énergique)
-* `--accent`: `#F2B84B` (Doré ambre chaleureux)
-* `--background`: `#F7FAFA` (Gris très clair hygiénique)
+## Palette Officielle (Alignée sur le logo CMGC)
+* `--primary`: `#163E93` (Bleu Roi Médical Officiel Le Grand Centre)
+* `--primary-dark`: `#0E2866` (Bleu Nuit Profond d'autorité & prestige)
+* `--secondary`: `#2563EB` (Bleu Cobalt éclatant & confiance)
+* `--accent`: `#F59E0B` (Doré ambre chaleureux)
+* `--background`: `#F8FAFC` (Blanc bleuté hygiénique et apaisant)
 * `--white`: `#FFFFFF`
-* `--text`: `#1B2930`
+* `--text`: `#0F172A`
 * `--text-light`: `#64748B`
 
 ## Fonctionnalités Clés

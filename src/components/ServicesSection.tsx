@@ -6,8 +6,7 @@ import {
   HeartHandshake,
   Scan,
   Pill,
-  Clock,
-  ArrowRight
+  Clock
 } from 'lucide-react';
 import { SERVICES, CLINIC_INFO } from '../data/clinicData';
 
@@ -33,16 +32,16 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
   };
 
   return (
-    <section id="services" className="py-16 lg:py-24 bg-white border-b border-slate-100">
+    <section id="services" className="py-16 lg:py-24 bg-white border-b border-slate-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
           <div className="max-w-2xl">
-            <p className="text-xs font-bold uppercase tracking-widest text-[#27A6A6] mb-2">
+            <p className="text-xs font-extrabold uppercase tracking-widest text-[#2563EB] mb-2">
               Infrastructures & Prise en charge
             </p>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#064852] tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0E2866] tracking-tight">
               Nos Services Médicaux & Hospitaliers
             </h2>
             <p className="text-sm sm:text-base text-slate-600 mt-3">
@@ -52,7 +51,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
           <div className="mt-4 md:mt-0 flex items-center gap-3">
             <button
               onClick={onOpenEmergency}
-              className="px-4 py-2.5 text-xs font-bold text-rose-700 bg-rose-50 hover:bg-rose-100 border border-rose-200 rounded-xl transition-colors"
+              className="px-4 py-2.5 text-xs font-bold text-rose-700 bg-rose-50 hover:bg-rose-100 border border-rose-200 rounded-xl transition-colors cursor-pointer"
             >
               Urgences 24/7 : {CLINIC_INFO.phoneEmergency}
             </button>
@@ -64,12 +63,12 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
           {SERVICES.map((srv) => (
             <div
               key={srv.id}
-              className="group bg-[#F7FAFA] hover:bg-white rounded-2xl p-6 border border-slate-200/80 hover:border-[#27A6A6]/40 transition-all duration-300 hover:shadow-lg flex flex-col justify-between"
+              className="group bg-[#F8FAFC] hover:bg-white rounded-3xl p-6 sm:p-7 border border-slate-200 hover:border-[#2563EB]/40 transition-all duration-300 hover:shadow-xl flex flex-col justify-between"
             >
               <div>
                 {/* Header card */}
                 <div className="flex items-center justify-between mb-5">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#0B5D6B] to-[#27A6A6] flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform">
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#163E93] to-[#2563EB] flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
                     {getIcon(srv.icon)}
                   </div>
                   {srv.badge && (
@@ -79,7 +78,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                   )}
                 </div>
 
-                <h3 className="text-lg font-bold text-[#064852] group-hover:text-[#0B5D6B] mb-2 transition-colors">
+                <h3 className="text-lg font-bold text-[#0E2866] group-hover:text-[#163E93] mb-2 transition-colors">
                   {srv.title}
                 </h3>
 
@@ -89,8 +88,8 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
               </div>
 
               {/* Schedule footer */}
-              <div className="pt-4 border-t border-slate-200/60 flex items-center gap-2 text-xs text-slate-500">
-                <Clock className="w-3.5 h-3.5 text-[#27A6A6] shrink-0" />
+              <div className="pt-4 border-t border-slate-200/80 flex items-center gap-2 text-xs text-slate-500">
+                <Clock className="w-3.5 h-3.5 text-[#2563EB] shrink-0" />
                 <span className="truncate">{srv.schedule}</span>
               </div>
             </div>

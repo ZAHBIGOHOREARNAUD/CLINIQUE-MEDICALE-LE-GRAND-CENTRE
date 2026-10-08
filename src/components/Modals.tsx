@@ -60,7 +60,7 @@ export const EmergencyModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
           </div>
 
           <div className="flex items-start gap-2.5">
-            <ShieldCheck className="w-4 h-4 text-[#27A6A6] shrink-0 mt-0.5" />
+            <ShieldCheck className="w-4 h-4 text-[#2563EB] shrink-0 mt-0.5" />
             <div>
               <strong>Arrivée directe par vos propres moyens :</strong> Présentez-vous à l'accès dédié « Urgences », Boulevard Hassan II, Cocody (entrée de gauche avec barrière automatique levée).
             </div>
@@ -101,8 +101,8 @@ export const MentionsLegalesModal: React.FC<ModalProps> = ({ isOpen, onClose }) 
         </button>
 
         <div className="flex items-center gap-3 mb-4">
-          <FileText className="w-6 h-6 text-[#0B5D6B]" />
-          <h3 className="text-xl font-extrabold text-[#064852]">Mentions Légales</h3>
+          <FileText className="w-6 h-6 text-[#163E93]" />
+          <h3 className="text-xl font-extrabold text-[#0E2866]">Mentions Légales</h3>
         </div>
 
         <div className="space-y-4 text-xs text-slate-600 leading-relaxed">
@@ -145,7 +145,7 @@ export const MentionsLegalesModal: React.FC<ModalProps> = ({ isOpen, onClose }) 
         <div className="mt-6 pt-4 border-t border-slate-100 flex justify-end">
           <button
             onClick={onClose}
-            className="px-5 py-2 text-xs font-bold text-white bg-[#0B5D6B] hover:bg-[#064852] rounded-xl"
+            className="px-5 py-2 text-xs font-bold text-white bg-[#163E93] hover:bg-[#0E2866] rounded-xl"
           >
             Fermer
           </button>
@@ -169,8 +169,8 @@ export const PrivacyModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
         </button>
 
         <div className="flex items-center gap-3 mb-4">
-          <Lock className="w-6 h-6 text-[#0B5D6B]" />
-          <h3 className="text-xl font-extrabold text-[#064852]">Politique de Confidentialité & Secret Médical</h3>
+          <Lock className="w-6 h-6 text-[#163E93]" />
+          <h3 className="text-xl font-extrabold text-[#0E2866]">Politique de Confidentialité & Secret Médical</h3>
         </div>
 
         <div className="space-y-4 text-xs text-slate-600 leading-relaxed">
@@ -206,7 +206,7 @@ export const PrivacyModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
         <div className="mt-6 pt-4 border-t border-slate-100 flex justify-end">
           <button
             onClick={onClose}
-            className="px-5 py-2 text-xs font-bold text-white bg-[#0B5D6B] hover:bg-[#064852] rounded-xl"
+            className="px-5 py-2 text-xs font-bold text-white bg-[#163E93] hover:bg-[#0E2866] rounded-xl"
           >
             J'ai compris
           </button>

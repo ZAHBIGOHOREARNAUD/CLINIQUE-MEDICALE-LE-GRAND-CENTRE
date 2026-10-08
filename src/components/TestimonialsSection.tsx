@@ -9,10 +9,10 @@ export const TestimonialsSection: React.FC = () => {
         
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-14">
-          <p className="text-xs font-bold uppercase tracking-widest text-[#27A6A6] mb-2">
+          <p className="text-xs font-bold uppercase tracking-widest text-[#2563EB] mb-2">
             La Confiance de Nos Patients
           </p>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#064852] tracking-tight mb-3">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0E2866] tracking-tight mb-3">
             Témoignages & Retours d'Expérience
           </h2>
           <p className="text-sm sm:text-base text-slate-600">
@@ -25,9 +25,9 @@ export const TestimonialsSection: React.FC = () => {
           {TESTIMONIALS.map((item) => (
             <div
               key={item.id}
-              className="bg-[#F7FAFA] border border-slate-200/90 rounded-2xl p-6 sm:p-7 flex flex-col justify-between shadow-2xs hover:shadow-md transition-shadow relative"
+              className="bg-[#F8FAFC] border border-slate-200/90 rounded-2xl p-6 sm:p-7 flex flex-col justify-between shadow-2xs hover:shadow-md transition-shadow relative"
             >
-              <Quote className="w-8 h-8 text-[#27A6A6]/20 absolute top-5 right-5" />
+              <Quote className="w-8 h-8 text-[#163E93]/20 absolute top-5 right-5" />
 
               <div>
                 {/* Rating stars */}
@@ -47,11 +47,11 @@ export const TestimonialsSection: React.FC = () => {
               {/* Author Info */}
               <div className="pt-4 border-t border-slate-200 flex items-center justify-between">
                 <div>
-                  <h4 className="text-xs font-extrabold text-[#064852]">{item.author}</h4>
+                  <h4 className="text-xs font-extrabold text-[#0E2866]">{item.author}</h4>
                   <p className="text-[11px] text-slate-500">{item.city}</p>
                 </div>
                 <div className="text-right">
-                  <span className="text-[10px] font-semibold text-[#0B5D6B] bg-[#0B5D6B]/8 px-2 py-0.5 rounded-md">
+                  <span className="text-[10px] font-semibold text-[#163E93] bg-[#163E93]/8 px-2 py-0.5 rounded-md">
                     {item.department}
                   </span>
                   <p className="text-[10px] text-slate-400 mt-0.5">{item.date}</p>
@@ -63,7 +63,7 @@ export const TestimonialsSection: React.FC = () => {
 
         {/* Trust audit score badge */}
         <div className="mt-10 flex items-center justify-center gap-2 text-xs font-semibold text-slate-600">
-          <CheckCircle className="w-4 h-4 text-[#27A6A6]" />
+          <CheckCircle className="w-4 h-4 text-[#163E93]" />
           <span>Avis certifiés recueillis auprès des patients hospitalisés et en ambulatoire</span>
         </div>
 
