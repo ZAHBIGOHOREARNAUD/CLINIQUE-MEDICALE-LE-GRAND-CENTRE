@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Phone, Calendar, Menu, X, Activity, AlertCircle, User as UserIcon } from 'lucide-react';
+import { Phone, Menu, X, Activity, AlertCircle, User as UserIcon } from 'lucide-react';
 import { CLINIC_INFO } from '../data/clinicData';
 import { ClinicLogo } from './ClinicLogo';
 import { useAuth } from '../contexts/AuthContext';
@@ -7,7 +7,7 @@ import { useAuth } from '../contexts/AuthContext';
 interface HeaderProps {
   activeSection: string;
   onNavigate: (sectionId: string) => void;
-  onOpenAppointment: () => void;
+  onOpenAppointment?: () => void;
   onOpenEmergency: () => void;
   onOpenPatientPortal?: () => void;
 }
@@ -31,7 +31,6 @@ export const Header: React.FC<HeaderProps> = ({
   }, []);
 
   const navItems = [
-    { id: 'accueil', label: 'Accueil' },
     { id: 'clinique', label: 'La Clinique' },
     { id: 'specialites', label: 'Spécialités' },
     { id: 'services', label: 'Services' },
@@ -142,26 +141,18 @@ export const Header: React.FC<HeaderProps> = ({
               ) : (
                 <UserIcon className="w-3.5 h-3.5 text-[#2563EB]" />
               )}
-              <span className="truncate max-w-[110px]">
+              <span className="truncate max-w-[120px]">
                 {user ? (isAdmin ? 'Admin' : user.displayName?.split(' ')[0] || 'Patient') : 'Espace Patient'}
               </span>
             </button>
 
             <a
               href={`tel:${CLINIC_INFO.phoneMainRaw}`}
-              className="hidden xl:inline-flex items-center gap-2 px-3 py-2 text-xs font-bold text-[#163E93] hover:bg-blue-50/60 border border-slate-200 rounded-xl transition-colors"
+              className="inline-flex items-center gap-2 px-3 py-2 text-xs font-bold text-[#163E93] hover:bg-blue-50/60 border border-slate-200 rounded-xl transition-colors"
             >
               <Phone className="w-3.5 h-3.5 text-[#2563EB]" />
               <span>{CLINIC_INFO.phoneMain}</span>
             </a>
-
-            <button
-              onClick={onOpenAppointment}
-              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-bold text-white bg-[#163E93] hover:bg-[#0E2866] active:bg-[#0A1E4A] rounded-xl shadow-xs hover:shadow-sm transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#163E93] cursor-pointer"
-            >
-              <Calendar className="w-4 h-4 text-[#F59E0B]" />
-              <span>Prendre rendez-vous</span>
-            </button>
           </div>
 
           {/* Mobile hamburger button */}
@@ -172,12 +163,6 @@ export const Header: React.FC<HeaderProps> = ({
               title="Espace Patient"
             >
               <UserIcon className="w-4 h-4" />
-            </button>
-            <button
-              onClick={onOpenAppointment}
-              className="px-2.5 py-1.5 text-xs font-bold text-white bg-[#163E93] rounded-lg"
-            >
-              RDV
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -210,17 +195,6 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
 
           <div className="mt-4 pt-4 border-t border-slate-100 flex flex-col gap-2.5">
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenAppointment();
-              }}
-              className="w-full flex items-center justify-center gap-2 py-3 text-sm font-bold text-white bg-[#163E93] rounded-xl shadow-xs"
-            >
-              <Calendar className="w-4 h-4 text-[#F59E0B]" />
-              <span>Prendre rendez-vous en ligne</span>
-            </button>
-
             <a
               href={`tel:${CLINIC_INFO.phoneMainRaw}`}
               className="w-full flex items-center justify-center gap-2 py-2.5 text-sm font-bold text-[#163E93] border border-slate-200 rounded-xl bg-slate-50"
