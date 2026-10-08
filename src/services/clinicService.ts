@@ -111,6 +111,16 @@ export async function sendContactMessage(data: Omit<ContactMessageData, 'id'>): 
 
   try {
     await setDoc(msgRef, payload);
+    // Send to Node.js backend API as well
+    try {
+      await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+    } catch {
+      // Backend api notification optional fallback
+    }
     return messageId;
   } catch (error) {
     handleFirestoreError(error, OperationType.CREATE, `${collectionPath}/${messageId}`);
